@@ -1,0 +1,53 @@
+html, body{
+    margin: 0 auto;
+    padding: 0;
+}
+
+.centerblock{
+    text-align: center;
+}
+
+.event-box {
+    color:black;
+    border-style: solid;
+    border-width: 1px;
+    width: 250px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px; 
+    height: 250px;
+}
+
+.search-input{
+    border-radius: 6px;
+}
+
+.search-input:focus{
+    outline: none;
+}
+
+.ul-style{
+    list-style: none;    padding: 0;margin: 0 auto;
+}
+
+.img-style{
+    width:70px;height:70px;
+}
+
+.sold-out{
+    font-style:italic;
+    font-weight: 600;
+    color: #FF0000;
+}
+
+@media only screen and (max-width: 1024px){
+    .event-box {
+        width: 210px;
+    }
+}
+
+@media (min-width: 766px) and (max-width: 1900px){
+    .centerblock:last-child {
+        text-align: left;
+      }
+}

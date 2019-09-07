@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+     <div class="col-12 col-sm-12 col-md-12">
+        <div class="mt-3">
+           <label class="font-weight-bold">Event Name:</label>
+           <span class="ml-2">{{eventNameVal}}</span>
+        </div>
+        <p *ngIf="submitted" class="alert alert-success">Tickets booked</p>
+        <div>
+           <label class="font-weight-bold">Number of available seats:</label>
+           <span class="ml-2 font-14">{{seatCount}}</span>
+        </div>
+     </div>
+  </div>
+  <div class="row">
+     <div class="col-12 col-sm-12 col-md-12">
+        <form [formGroup]="bookingForm" novalidate class="mt-1" (ngSubmit)="submitLogin()">
+        <fieldset class="form-group">
+           <div>
+              <label>Name</label>
+              <input type="text" class="form-control" pattern="^[A-Za-z ]+$" formControlName="u_name" required>
+           </div>
+           <div *ngIf="bookingForm.controls['u_name'].invalid && (bookingForm.controls['u_name'].dirty || bookingForm.controls['u_name'].touched)" class="alert alert-danger">
+              <div *ngIf="bookingForm.controls['u_name'].errors.required">
+                 Please enter your name
+              </div>
+              <div  *ngIf="bookingForm.controls['u_name'].errors.pattern">
+                 Only letters and spaces are allowed
+              </div>
+           </div>
+        </fieldset>
+        <fieldset class="form-group">
+           <div>
+              <label>Email</label>
+              <input type="email" class="form-control" formControlName="u_email" required>
+           </div>
+           <div *ngIf="bookingForm.controls['u_email'].invalid && (bookingForm.controls['u_email'].dirty || bookingForm.controls['u_email'].touched)" class="alert alert-danger">
+              <div *ngIf="bookingForm.controls['u_email'].errors.required">
+                 Please enter your email
+              </div>
+              <div *ngIf="bookingForm.controls['u_email'].errors.pattern">
+                 Invalid email
+              </div>
+           </div>
+        </fieldset>
+        <fieldset class="form-group">
+           <div>
+              <label>Phone Number</label>
+              <input type="number" class="form-control" formControlName="u_phone">
+           </div>
+           <div *ngIf="bookingForm.controls['u_phone'].invalid && (bookingForm.controls['u_phone'].dirty || bookingForm.controls['u_phone'].touched)" class="alert alert-danger">
+              <div *ngIf="bookingForm.controls['u_phone'].errors.pattern || bookingForm.controls['u_phone'].errors.required">
+                 Please enter 10 digit phone number
+              </div>
+           </div>
+        </fieldset>
+        <fieldset class="form-group">
+           <div>
+              <label>No. of Seats</label>
+              <select class="form-control" formControlName="u_seats" (change)="onSeatSelected($event.target.value)">
+                 <option [selected] value="" disabled>Please select number of seats </option>
+                 <option [value]="seatIdx" *ngFor="let seatIdx of seats">{{ seatIdx }}</option>
+              </select>
+           </div>
+           <div *ngIf="bookingForm.controls['u_seats'].invalid && (bookingForm.controls['u_seats'].dirty || bookingForm.controls['u_seats'].touched)" class="alert alert-danger">
+              <div *ngIf="bookingForm.controls['u_seats'].errors.required">
+                 Please enter number of seats
+              </div>
+           </div>
+           <div *ngIf="notAvailableSeat"  class="alert alert-danger">
+              Number of seats selected is more than available seats
+           </div>
+        </fieldset>
+        <fieldset class="form-group" >
+           <div formArrayName="atteName" *ngFor="let attName of bookingForm.controls.atteName['controls']; let i = index">
+              <ng-container [formGroupName]="i">
+                 <label>Name of Attendee {{i + 1}}</label>
+                 <input formControlName="attName" type="text" class="form-control" required>
+                 <div *ngIf="(bookingForm.controls.atteName['controls'].length > 1) && (getValidity(i) && isValidFormSubmitted) || attName.invalid && (attName.dirty || attName.touched)" class="alert alert-danger">
+                    Please enter the name of Attendee {{i + 1}}
+                 </div>
+              </ng-container>
+           </div>
+        </fieldset>
+        <div class="form-group float-right">
+           <button type="submit" class="btn btn-primary" [disabled]="submitted">Submit</button>
+           <button type="button" class="btn btn-primary ml-2" (click)="backToBookingListScreen()"  [disabled]="submitted">Cancel</button>
+        </div>
+        </form>
+     </div>
+  </div>
+  <div class="row"></div>
+</div>

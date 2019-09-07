@@ -1,0 +1,15 @@
+.font-14{
+    font-size: 1rem;
+}
+fieldset{
+    padding: 0.5rem
+}
+.alert {
+    padding: 0;
+    padding-left: 0.5rem;
+    font-style: italic;
+    margin-bottom: 0;
+}
+.form-group{
+    margin-bottom: 0;
+}
