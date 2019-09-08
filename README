@@ -1,0 +1,50 @@
+Event Booking Application 
+Application details 
+1. Create an application that lists events and ability to book tickets for that event. 2. The application has 2 pages - event listing and event booking. 3. The application should be mobile responsive. 
+a. Feel free to use material components or Bootstrap 
+Event Listing 
+1. There is a Search input on the top of the listing with placeholder - “SEARCH EVENTS”. 2. The events are listed in a grid of 4 columns (single column in mobile view). 3. Each event block has a name, image, date of event, number of seats available for the 
+event and "Book Now" button. 4. The events data is fetched from a JSON file through HTTP request. 
+a. This could be external server or local json files 5. Events start filtering as soon as the user starts entering letters in the Search input. 6. The search is done only on the name of the event, on all the events(independent of 
+availability of the seats) 7. If the search doesn't produce results, "No results found!" is displayed in the listing area. 8. In the event block, if seats are available, "Book Now" button is shown. On clicking "Book 
+Now" button of an event, the user is redirected to the Event booking page. 9. If the seats are not available for the event, there should be no "Book Now" button on the 
+event block. In place of "Book Now" button, "Sold Out" text is shown. 
+Event Booking 
+1. The header of the page should be the name of the event. 2. Below the header, number of available seats is displayed with label - "Number of 
+available seats". 3. Below is the booking form that includes following fields: 
+Field Field Label Validation Validation Message 
+
+User Name (Text input) 
+Name 1. Required 
+2. Only Letters and 
+spaces 
+1. “Please enter your name” 2. “Only letters and spaces are 
+1. “Please enter your name” 2. “Only letters and spaces are 
+1. “Please enter your name” 2. “Only letters and spaces are 
+allowed” 
+
+Email Email 1. Required 1. “Please enter your email” 
+2. (Text input) 2. Should be in email 
+“Invalid email” format 
+Phone Number (Text input) 
+1. “Please enter 10 digit phone 
+number” 
+Number of seats (Drop down from 1 to 6) 
+Phone 
+1. Should be numeric Number 
+with 10 digits (not greater or lesser than 10) 
+1. “Please enter number of seats” 2. “Number of seats selected is 
+more than available seats” 
+Name of other attendees (Text input depending on number of seats selected. Not required if number of seats is 1) 
+No. of Seats 1. Required 
+2. Number of seats selected greater than available seats 
+Name of 
+1. Required 1. “Please enter the name of Attendee 2, 
+Attendee 2”, “Please enter the Name of 
+name of Attendee 3”, ... Attendee 3,... 
+4. There are two buttons - Submit and Cancel, below the fields. 5. If Cancel button is clicked, the user is taken back to the listing page. 6. If Submit button is clicked, following processes should take place: 
+a. If any validation fails, the validation message as given in the table is shown below 
+each field where there is validation error. b. If all names are not provided for selected number of seats, error should appear 
+below each name field which is not provided. c. If there is no error, the form is successfully submitted and a message is shown 
+below the header - "Tickets booked". Disable Submit and Cancel buttons. 
+i. If using external server then the data is posted ii. Else data is logged to the page and console 
